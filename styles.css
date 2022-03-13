@@ -1,8 +1,29 @@
+/* @import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/minecraft-font.css");
+@import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/Mojang-Regular.woff2");
+@import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/Mojang-Bold.woff2"); 
+Oh you found this file?, NOW GO SUBSCRIBE TO MY CHANNEL https://youtube.com/Trioplane (doesnt work lol)
+*/
+
+@font-face {
+  font-family: "Mojang";
+  src: url("Mojang-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mojang";
+  src: url("Mojang-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
 *,
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Mojang, Helvetica, sans-serif;
+  cursor: url(Craftdle\ Cursor.png) 0 0, auto;
 }
 
 body {
@@ -17,17 +38,16 @@ body {
 
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(20, minmax(auto, 1.25em));
-  grid-auto-rows: 3em;
-  gap: 0.25em;
+  grid-template-columns: repeat(20, minmax(auto, 1.5em));
+  grid-auto-rows: 3.5em;
+  gap: 0.6em;
   justify-content: center;
 }
 
 .key {
-  font-size: inherit;
+  font-size: 1.5em;
   grid-column: span 2;
   border: none;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,6 +62,12 @@ body {
   border-radius: 0.25em;
   user-select: none;
   cursor: pointer;
+  font-weight: bolder;
+  transform: scale(1.05);
+}
+
+.key[data-enter] {
+  font-size: 1em;
 }
 
 .key.large {
@@ -81,14 +107,13 @@ body {
   flex-grow: 1;
   grid-template-columns: repeat(5, 4em);
   grid-template-rows: repeat(6, 4em);
-  gap: 0.25em;
-  margin-bottom: 1em;
+  gap: 0.3em;
 }
 
 .tile {
   font-size: 2em;
   color: white;
-  border: 0.05em solid hsl(240, 2%, 23%);
+  border: 0.1em solid hsl(240, 2%, 23%);
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
@@ -104,19 +129,23 @@ body {
 
 .tile[data-state="wrong"] {
   border: none;
-  background-color: hsl(240, 2%, 23%);
+  background: url(Wrong.png) no-repeat center;
 }
 
 .tile[data-state="wrong-location"] {
-  background-color: hsl(49, 51%, 47%);
+  background: url(Wrong-Location.png) no-repeat center;
+  border: none;
+  color: hsl(240, 2%, 23%);
 }
 
 .tile[data-state="correct"] {
-  background-color: hsl(115, 29%, 43%);
+  background: url(Correct.png) no-repeat center;
+  border: none;
+  color: hsl(240, 2%, 23%);
 }
 
 .tile.shake {
-  animation: shake 1s steps(1);
+  animation: shake 0.5s ease;
 }
 
 .tile.flip {
@@ -127,39 +156,39 @@ body {
   animation: dance 500ms ease;
 }
 
-@keyframes shake {
+/* @keyframes shake OLD CODE DONT USE {
   0% {
-    transform: rotate(3deg);
-    margin-top: 15px;
-    font-size: 1.5em;
     background-color: tomato;
   }
   20% {
-    transform: rotate(-3deg);
-    margin-top: 30px;
-    font-size: 1em;
     background-color: rgb(255, 160, 71);
   }
   40% {
-    transform: rotate(5deg);
-    margin-top: 40px;
-    font-size: 0.7em;
     background-color: tomato;
   }
   60% {
-    transform: rotate(-5deg);
-    margin-top: 50px;
-    font-size: 0.5em;
     background-color: rgb(255, 160, 71);
   }
   80% {
-    transform: rotate(7deg);
-    margin-top: 60px;
-    font-size: 0.3em;
-    background-color: tomato;
+    background-color: rgb(255, 0, 0);
+  }
+} */
+
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(10px) rotate(-5deg);
+    background: url(Lava1.png) no-repeat center;
+  }
+  50% {
+    transform: translateX(-10px) rotate(5deg);
+    background: url(Lava3.png) no-repeat center;
   }
   100% {
-    display: none;
+    transform: translateX(0) rotate(0);
+    background: url(Lava1.png) no-repeat center;
   }
 }
 

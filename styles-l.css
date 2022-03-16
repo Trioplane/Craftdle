@@ -1,0 +1,296 @@
+/* @import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/minecraft-font.css");
+@import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/Mojang-Regular.woff2");
+@import url("https://raw.githubusercontent.com/Trioplane/Hex-Blockbench-Theme/main/Mojang-Bold.woff2"); 
+Oh you found this file?, NOW GO SUBSCRIBE TO MY CHANNEL https://youtube.com/Trioplane (doesnt work lol)
+*/
+
+:root {
+  --clr-dark: hsl(240, 3%, 7%);
+}
+
+lightMode {
+  --clr-light: hsl(240, 3%, 80%);
+}
+
+@font-face {
+  font-family: "Mojang";
+  src: url("Mojang-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mojang";
+  src: url("Mojang-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Mojang, Helvetica, sans-serif;
+  cursor: url(Craftdle\ Cursor.png) 0 0, auto;
+}
+
+button#l-mode-toggle {
+  background-color: rgb(224, 224, 224);
+  border-radius: 2px;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 1em;
+  font-weight: bold;
+  padding: 2em;
+  position: absolute;
+  right: 0;
+  top: 3vh;
+  z-index: 1;
+  margin: 1em;
+  transition: all 0.4s ease;
+}
+
+button#l-mode-toggle:hover {
+  background-color: rgb(66, 66, 66);
+  color: rgb(255, 255, 255);
+  /* make a white glow */
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+}
+
+abbr {
+  background-color: rgb(66, 66, 66);
+  border-radius: 2px;
+  border: none;
+  color: #fff;
+  font-size: 0.6em;
+  font-weight: bold;
+  padding: 0.5em;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  margin: 1em;
+  transition: all 0.4s ease;
+}
+
+body {
+  background-color: var(--clr-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 1em;
+  font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(auto, 1.5em));
+  grid-auto-rows: 3.5em;
+  gap: 0.6em;
+  justify-content: center;
+}
+
+.key {
+  font-size: 1.5em;
+  grid-column: span 2;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(
+    var(--hue, 200),
+    var(--saturation, 1%),
+    calc(var(--lightness-offset, 0%) + var(--lightness, 80%))
+  );
+  color: rgb(73, 73, 73);
+  fill: rgb(73, 73, 73);
+  text-transform: uppercase;
+  border-radius: 0.25em;
+  user-select: none;
+  cursor: pointer;
+  font-weight: bolder;
+  transform: scale(1.05);
+  transition: all 0.1s ease;
+}
+
+.key[data-enter] {
+  font-size: 1em;
+}
+
+.key.large {
+  grid-column: span 3;
+}
+
+.key > svg {
+  width: 1.75em;
+  height: 1.75em;
+}
+
+.key:hover,
+.key:focus {
+  --lightness-offset: 10%;
+  box-shadow: 0 0 5px rgb(0, 0, 0);
+  transform: scale(1.1);
+}
+
+.key.wrong {
+  --lightness: 23%;
+  color: hsl(0, 0%, 79%);
+}
+
+.key.wrong-location {
+  --hue: 49;
+  --saturation: 51%;
+  --lightness: 47%;
+}
+
+.key.correct {
+  --hue: 115;
+  --saturation: 29%;
+  --lightness: 43%;
+}
+
+.guess-grid {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  flex-grow: 1;
+  grid-template-columns: repeat(5, 4em);
+  grid-template-rows: repeat(6, 4em);
+  gap: 0.3em;
+}
+
+.tile {
+  font-size: 2em;
+  color: rgb(0, 0, 0);
+  border: 0.1em solid hsl(240, 2%, 65%);
+  text-transform: uppercase;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  transition: transform 250ms linear;
+}
+
+.tile[data-state="active"] {
+  border-color: hsl(0, 0%, 79%);
+}
+
+.tile[data-state="wrong"] {
+  border: none;
+  color: hsl(0, 0%, 79%);
+  background: url(Wrong.png) no-repeat center;
+}
+
+.tile[data-state="wrong-location"] {
+  background: url(Wrong-Location.png) no-repeat center;
+  border: none;
+  color: hsl(240, 2%, 23%);
+}
+
+.tile[data-state="correct"] {
+  background: url(Correct.png) no-repeat center;
+  border: none;
+  color: hsl(240, 2%, 23%);
+}
+
+.tile.shake {
+  animation: shake 0.5s ease;
+}
+
+.tile.flip {
+  transform: rotateX(90deg);
+}
+
+.tile.dance {
+  animation: dance 500ms ease;
+}
+
+/* @keyframes shake OLD CODE DONT USE {
+    0% {
+      background-color: tomato;
+    }
+    20% {
+      background-color: rgb(255, 160, 71);
+    }
+    40% {
+      background-color: tomato;
+    }
+    60% {
+      background-color: rgb(255, 160, 71);
+    }
+    80% {
+      background-color: rgb(255, 0, 0);
+    }
+  } */
+
+@keyframes shake {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(10px) rotate(-5deg);
+    background: url(Lava1.png) no-repeat center;
+  }
+  50% {
+    transform: translateX(-10px) rotate(5deg);
+    background: url(Lava3.png) no-repeat center;
+  }
+  100% {
+    transform: translateX(0) rotate(0);
+    background: url(Lava1.png) no-repeat center;
+  }
+}
+
+@keyframes dance {
+  0% {
+    filter: brightness(2);
+  }
+  50% {
+    filter: brightness(0.7);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.alert-container {
+  position: fixed;
+  top: 10vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alert {
+  pointer-events: none;
+  background-color: hsl(204, 7%, 85%);
+  padding: 0.75em;
+  border-radius: 0.25em;
+  opacity: 1;
+  transition: all 500ms ease-in-out;
+  margin-bottom: 0.5em;
+  animation: hover 3s ease-in-out infinite alternate;
+}
+
+.alert:last-child {
+  margin-bottom: 0;
+}
+
+.alert.hide {
+  opacity: 0;
+}
+
+@keyframes hover {
+  0% {
+    transform: translateY(1vw);
+  }
+  100% {
+    transform: translateY(-1vw);
+  }
+}

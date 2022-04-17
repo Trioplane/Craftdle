@@ -104,17 +104,37 @@
     <dialog id="startScreen">
       <div id="how-to-play"><h1>HOW TO PLAY</h1></div>
       <div class="section-1-d">
-        <p class="margin-b">Guess the <strong>WORDLE</strong>in 6 tries</p>
-        <p class="margin-b">Each guess must be a valid five-letter word. Hit the enter button to submit.</p>
-        <p class="margin-b">After each guess, the color of the tiles will change to show how close your guess was to the word.</p>
-        <hr>
+        <p class="margin-b">Guess the <strong>CRAFTDLE</strong>in 6 tries</p>
+        <p class="margin-b">
+          Each guess must be a valid five-letter word. Hit the enter button to
+          submit.
+        </p>
+        <p class="margin-b">
+          After each guess, the color of the tiles will change to show how close
+          your guess was to the word.
+        </p>
+        <hr />
         <p>Examples</p>
-        <p>The letter W is in the word and in the correct spot.
-        </p>
-        <p>The letter W is in the word and in the correct spot.
-        </p>
-        <p>The letter U is not in the word in any spot.
-        </p>
+        <p>The letter W is in the word and in the correct spot.</p>
+        <div class="fakebox fakecorrect">W</div>
+        <div class="fakebox">E</div>
+        <div class="fakebox">A</div>
+        <div class="fakebox">R</div>
+        <div class="fakebox">Y</div>
+        <p>The letter I is in the word but in the wrong spot.</p>
+        <div class="fakebox">P</div>
+        <div class="fakebox fakewrongloc">I</div>
+        <div class="fakebox">L</div>
+        <div class="fakebox">L</div>
+        <div class="fakebox">S</div>
+        <p>The letter U is not in the word in any spot.</p>
+        <div class="fakebox">V</div>
+        <div class="fakebox">A</div>
+        <div class="fakebox">G</div>
+        <div class="fakebox fakewrong">U</div>
+        <div class="fakebox">E</div>
+        <hr />
+        <p>A new CRAFTDLE will be available each day!</p>
       </div>
     </dialog>
     <script>
@@ -122,14 +142,13 @@
         location.href = "index-l.html";
       }
     </script>
-    <button id="e">DEV TEST BUTTON</button>
     <script>
-      const devButton = document.getElementById("e")
-      const dialog = document.getElementById("startScreen")
+      const dialog = document.getElementById("startScreen");
+      dialog.showModal();
 
-      devButton.addEventListener('click', () => {
-        dialog.showModal()
-      })
+      dialog.addEventListener("click", () => {
+        dialog.close();
+      });
     </script>
   </body>
 </html>

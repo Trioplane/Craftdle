@@ -6,9 +6,6 @@ Oh you found this file?, NOW GO SUBSCRIBE TO MY CHANNEL https://youtube.com/Trio
 
 :root {
   --clr-dark: hsl(240, 3%, 7%);
-}
-
-lightMode {
   --clr-light: hsl(240, 3%, 80%);
 }
 
@@ -293,4 +290,74 @@ body {
   100% {
     transform: translateY(-1vw);
   }
+}
+
+@keyframes dialog {
+  0% {
+    opacity: 0;
+    transform: translateY(1em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0em);
+  }
+}
+/* Start Dialog */
+
+#startScreen::backdrop {
+  background-color: hsl(240, 3%, 7%);
+  opacity: 0.5;
+}
+
+#startScreen {
+  max-width: 475px;
+  background-color: var(--clr-light);
+  color: var(--clr-dark);
+  border: none;
+  box-shadow: 0px 0px 1em rgba(0, 0, 0, 0.555);
+  border-radius: 0.5em;
+  animation: dialog 0.5s ease forwards;
+  line-height: 2ch;
+  font-size: 1.1ch;
+  padding: 0;
+}
+
+#how-to-play {
+  text-align: center;
+}
+hr {
+  filter: brightness(0.3);
+}
+
+.fakebox {
+  font-size: 2em;
+  color: var(--clr-dark);
+  border: 0.1em solid hsl(240, 2%, 23%);
+  width: 2ch;
+  height: 2ch;
+  text-transform: uppercase;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.fakecorrect {
+  background-color: #538d4e;
+}
+
+.fakewrongloc {
+  background-color: #b59f3b;
+}
+
+.fakewrong {
+  background-color: #3a3a3c;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.section-1-d {
+  padding: 1em;
 }

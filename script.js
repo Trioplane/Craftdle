@@ -32,11 +32,6 @@ function handleMouseClick(e) {
     submitGuess();
     return;
   }
-
-  if (e.target.matches("[data-delete]")) {
-    deleteKey();
-    return;
-  }
 }
 
 function handleKeyPress(e) {
@@ -66,13 +61,12 @@ function pressKey(key) {
 }
 
 function deleteKey() {
-  const activeTiles = getActiveTiles();
-  const lastTile = activeTiles[activeTiles.length - 1];
-  if (activeTiles.length == null) return;
-  lastTile.dataset.letter = "";
-  lastTile.textContent = "";
-  delete lastTile.dataset.state;
-  delete lastTile.dataset.letter;
+  const activeTiles = getActiveTiles()
+  const lastTile = activeTiles[activeTiles.length - 1]
+  if (lastTile == null) return
+  lastTile.textContent = ""
+  delete lastTile.dataset.state
+  delete lastTile.dataset.letter
 }
 
 function submitGuess() {
@@ -170,6 +164,11 @@ function checkWinLose(guess, tiles) {
     showAlert("You win!", 5000);
     danceTiles(tiles);
     stopInteraction();
+    const endDialog = document.getElementById('endScreen')
+    endDialog.showModal()
+    endDialog.addEventListener("click", () => {
+       endDialog.close();
+    });
     return;
   }
 
@@ -177,6 +176,11 @@ function checkWinLose(guess, tiles) {
   if (remainingTiles.length === 0) {
     showAlert("You lose!", 5000);
     showAlert("The word was" + " " + targetWord.toUpperCase(), null);
+    const endDialog = document.getElementById('endScreen')
+    endDialog.showModal()
+    endDialog.addEventListener("click", () => {
+       endDialog.close();
+    });
     shakeTiles(tiles);
   }
 }

@@ -11,6 +11,7 @@
     /> -->
     <script src="words.js" defer></script>
     <script src="script.js" defer></script>
+    <script src="copy.js" defer></script>
     <title>Craftdle</title>
   </head>
   <body>
@@ -26,36 +27,36 @@
     >
     <div class="alert-container" data-alert-container></div>
     <div data-guess-grid class="guess-grid">
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
-      <div class="tile"></div>
+      <div class="tile" id="1"></div>
+      <div class="tile" id="2"></div>
+      <div class="tile" id="3"></div>
+      <div class="tile" id="4"></div>
+      <div class="tile" id="5"></div>
+      <div class="tile" id="6"></div>
+      <div class="tile" id="7"></div>
+      <div class="tile" id="8"></div>
+      <div class="tile" id="9"></div>
+      <div class="tile" id="10"></div>
+      <div class="tile" id="11"></div>
+      <div class="tile" id="12"></div>
+      <div class="tile" id="13"></div>
+      <div class="tile" id="14"></div>
+      <div class="tile" id="15"></div>
+      <div class="tile" id="16"></div>
+      <div class="tile" id="17"></div>
+      <div class="tile" id="18"></div>
+      <div class="tile" id="19"></div>
+      <div class="tile" id="20"></div>
+      <div class="tile" id="21"></div>
+      <div class="tile" id="22"></div>
+      <div class="tile" id="23"></div>
+      <div class="tile" id="24"></div>
+      <div class="tile" id="25"></div>
+      <div class="tile" id="26"></div>
+      <div class="tile" id="27"></div>
+      <div class="tile" id="28"></div>
+      <div class="tile" id="29"></div>
+      <div class="tile" id="30"></div>
     </div>
     <div data-keyboard class="keyboard">
       <button class="key" data-key="Q">Q</button>
@@ -136,6 +137,12 @@
         <hr />
         <p>A new CRAFTDLE will be available each day!</p>
       </div>
+    </dialog>
+    <dialog id="endScreen">
+      <p>Click anywhere to close</p>
+      <span id="copyButton" onclick="showAlert('Copied!', 1000)">
+        Copy Results
+      </span>
     </dialog>
     <script>
       function switchToDarkMode() {
